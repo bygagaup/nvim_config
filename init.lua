@@ -1,24 +1,22 @@
+-- init.lua
+
+-- Подключение Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	'ThePrimeagen/vim-be-good',
-	'navarasu/onedark.nvim',
-	'nvim-lualine/lualine.nvim'
-})
+-- Загрузка Lazy.nvim
+require("lazy").setup("plugin_list")
 
--- Lua
-require('onedark').load()
-require('lualine').setup()
-
-require("core.options")
+-- Настройки
+require('settings.options')
+require('settings.keymaps')

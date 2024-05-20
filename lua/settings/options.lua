@@ -1,3 +1,5 @@
+-- lua/settings/options.lua
+
 local opt = vim.opt
 
 -- line number
