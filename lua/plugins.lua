@@ -199,6 +199,13 @@ return {
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 		end,
 	},
-	-- Массовое выделение
-	{ "mg979/vim-visual-multi" },
+	{
+		"vscode-neovim/vscode-multi-cursor.nvim",
+		event = "VeryLazy",
+		cond = not not vim.g.vscode,
+		opts = {},
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 }
